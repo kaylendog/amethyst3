@@ -86,6 +86,8 @@
 		"variant": "cpp",
 		"geometry": "cpp",
 		"hash_map": "cpp",
-		"hash_set": "cpp"
+		"hash_set": "cpp",
+		"queue": "cpp",
+		"stack": "cpp"
 	}
 }
