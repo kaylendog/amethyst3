@@ -1,0 +1,21 @@
+#include <stdexcept>
+
+#include <GLFW/glfw3.h>
+
+#include <amethyst/Window/Window.hpp>
+
+namespace amethyst {
+
+Window::Window(WindowOptions opts) {
+    if (!glfwInit()) {
+        throw std::runtime_error("Failed to initialize GLFW");
+    }
+    m_window = glfwCreateWindow(640, 480, "Amethyst Window", nullptr, nullptr);
+    if (!m_window) {
+        glfwTerminate();
+        throw std::runtime_error("Failed to create GLFW window");
+    }
+    glfwMakeContextCurrent(m_window);
+}
+
+} // namespace amethyst
