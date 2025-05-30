@@ -17,6 +17,9 @@ class Quaternion {
     static Quaternion from_euler_angles(float x, float y, float z,
                                         RotationOrder order = XYZ);
 
+    /// @brief Create a Quaternion from an axis and an angle.
+    static Quaternion from_axis_angle(const Vec3 &axis, float angle);
+
     /// @brief Default constructor for Quaternion, initializes to identity.
     Quaternion() = default;
 

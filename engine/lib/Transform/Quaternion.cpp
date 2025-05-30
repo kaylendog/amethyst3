@@ -7,9 +7,6 @@ Quaternion const Quaternion::IDENTITY = Quaternion(0.0f, 0.0f, 0.0f, 1.0f);
 
 Quaternion Quaternion::from_euler_angles(float x, float y, float z,
                                          RotationOrder order) {
-    x = glm::radians(x);
-    y = glm::radians(y);
-    z = glm::radians(z);
 
     float half_x = x * 0.5f;
     float half_y = y * 0.5f;
@@ -50,6 +47,13 @@ Quaternion Quaternion::from_euler_angles(float x, float y, float z,
     default:
         return Quaternion(0.0f, 0.0f, 0.0f, 1.0f);
     }
+}
+
+Quaternion Quaternion::from_axis_angle(const Vec3 &axis, float angle) {
+    float half_angle = angle * 0.5f;
+    float s = sin(half_angle);
+    return Quaternion(axis.x() * s, axis.y() * s, axis.z() * s,
+                      cos(half_angle));
 }
 
 Quaternion::Quaternion(float x, float y, float z, float w)

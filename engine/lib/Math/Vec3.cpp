@@ -47,4 +47,12 @@ float Vec3::length() { return glm::length(m_vec); }
 
 Vec3 Vec3::normalize() { return Vec3(glm::normalize(m_vec)); }
 
+float Vec3::dot(const Vec3 &other) const {
+    return glm::dot(m_vec, other.m_vec);
+}
+
+Vec3 Vec3::cross(const Vec3 &other) const {
+    return Vec3(glm::cross(m_vec, other.m_vec));
+}
+
 } // namespace amethyst
