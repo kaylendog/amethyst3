@@ -10,7 +10,8 @@ Window::Window(WindowOptions opts) {
     if (!glfwInit()) {
         throw std::runtime_error("Failed to initialize GLFW");
     }
-    m_window = glfwCreateWindow(640, 480, "Amethyst Window", nullptr, nullptr);
+    m_window =
+        glfwCreateWindow(opts.width, opts.height, opts.title, nullptr, nullptr);
     if (!m_window) {
         glfwTerminate();
         throw std::runtime_error("Failed to create GLFW window");

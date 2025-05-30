@@ -1,6 +1,6 @@
 project(engine)
 
-find_package(UnitTest++ CONFIG REQUIRED)
+add_compile_options(-Wall -Wextra -Werror -pedantic)
 
 # sources
 include_directories(
@@ -9,7 +9,6 @@ include_directories(
 file(GLOB_RECURSE SOURCES
     ${CMAKE_CURRENT_SOURCE_DIR}/lib/**/*.cpp
 )
-
 
 add_library(
     amethyst

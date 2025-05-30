@@ -12,9 +12,9 @@ SUITE(DependencyGraph) {
         graph.add_dependency(1, 2);
 
         auto order = graph.build();
-        CHECK_EQUAL(order.size(), 2);
-        CHECK_EQUAL(order[0], 1);
-        CHECK_EQUAL(order[1], 2);
+        CHECK_EQUAL(order.size(), static_cast<size_t>(2));
+        CHECK_EQUAL(order[0], static_cast<size_t>(1));
+        CHECK_EQUAL(order[1], static_cast<size_t>(2));
     }
 
     TEST(DependencyGraph_CycleDetection) {
