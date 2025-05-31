@@ -50,14 +50,16 @@ Quaternion Quaternion::from_euler_angles(float x, float y, float z,
 }
 
 Quaternion Quaternion::from_axis_angle(const Vec3 &axis, float angle) {
+    Vec3 norm_axis = axis.normalized();
     float half_angle = angle * 0.5f;
     float s = sin(half_angle);
-    return Quaternion(axis.x() * s, axis.y() * s, axis.z() * s,
+    return Quaternion(norm_axis.x() * s, norm_axis.y() * s, norm_axis.z() * s,
                       cos(half_angle));
 }
 
 Quaternion::Quaternion(float x, float y, float z, float w)
-    : m_quat(x, y, z, w) {}
+    // stupid argument order
+    : m_quat(w, x, y, z) {}
 
 float Quaternion::x() const { return m_quat.x; }
 
@@ -83,6 +85,10 @@ Vec3 Quaternion::operator*(const Vec3 &vec) const {
     Vec3 uv = Vec3(m_quat.x, m_quat.y, m_quat.z).cross(vec);
     Vec3 uuv = Vec3(m_quat.x, m_quat.y, m_quat.z).cross(uv);
     return vec + (uv * m_quat.w + uuv) * 2.0f;
+}
+
+Quaternion Quaternion::operator*(const Quaternion &other) const {
+    return Quaternion(m_quat * other.m_quat);
 }
 
 } // namespace amethyst

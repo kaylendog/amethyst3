@@ -1,10 +1,17 @@
 #pragma once
 
 #include <glm/glm.hpp>
+#include <glm/gtc/quaternion.hpp>
 
 #include <amethyst/Math/Vec3.hpp>
 
 namespace amethyst {
+
+const float PI = 3.14159265358979323846f;
+const float TAU = 6.28318530717958647692f;
+
+const float DEG_TO_RAD = PI / 180.0f;
+const float RAD_TO_DEG = 180.0f / PI;
 
 enum RotationOrder { XYZ, XZY, YXZ, YZX, ZXY, ZYX };
 
@@ -26,6 +33,9 @@ class Quaternion {
     /// @brief Construct a Quaternion with the given x, y, z, and w
     /// components.
     Quaternion(float x, float y, float z, float w);
+
+    /// @brief Construct a Quaternion from a glm::quat.
+    Quaternion(const glm::quat &quat) : m_quat(quat) {}
 
     /// @brief Return the x component of the quaternion.
     float x() const;
@@ -49,8 +59,11 @@ class Quaternion {
     /// @brief Rotate a vector by the quaternion.
     Vec3 operator*(const Vec3 &vec) const;
 
+    /// @brief Multiply two quaternions.
+    Quaternion operator*(const Quaternion &other) const;
+
   private:
-    glm::vec4 m_quat;
+    glm::quat m_quat;
 };
 
 } // namespace amethyst

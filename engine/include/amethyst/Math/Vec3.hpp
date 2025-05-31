@@ -45,8 +45,8 @@ class Vec3 {
     /// @brief Compute the length of the vector.
     float length();
 
-    /// @brief Normalize the vector to unit length.
-    Vec3 normalize();
+    /// @brief Compute the normalized vector.
+    Vec3 normalized() const;
 
     /// @brief Compute the dot product of two vectors.
     float dot(const Vec3 &other) const;

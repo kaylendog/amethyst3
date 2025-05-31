@@ -15,6 +15,7 @@ Transform Transform::with_position(const Vec3 position) const {
     transform.m_transform[3][0] = position.x();
     transform.m_transform[3][1] = position.y();
     transform.m_transform[3][2] = position.z();
+    transform.m_transform[3][3] = 1.0f;
     return transform;
 }
 
