@@ -6,6 +6,12 @@
 
 namespace amethyst {
 
+namespace detail {
+
+template <typename T> struct is_query_arg : std::false_type {};
+
+} // namespace detail
+
 /// @brief A Query is a way to fetch entities from the ECS that match a
 /// specific set of components.
 template <typename... Components> class Query {
